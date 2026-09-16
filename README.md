@@ -263,9 +263,53 @@ This is the proposed structure. It will be updated to reflect the actual impleme
 
 ## ⚙️ Installation and Setup
 
-Detailed setup and execution instructions will be added once the development environment and server configuration are finalized.
+### Development Environment
 
-The application is intended to run as a Java JSP/Servlet web application.
+| Component | Version |
+|-----------|---------|
+| IDE | IntelliJ IDEA 2026.2.2 |
+| Java JDK | Java 23.0.2 |
+| Java Compilation Target | Java 21 |
+| Web Server | Apache Tomcat 10.1.60 |
+| Build Tool | Apache Maven |
+| Backend | Java, JSP, Jakarta Servlets |
+| Frontend | HTML5, CSS3, JavaScript |
+
+### Running the Application
+
+1. Clone the GitHub repository.
+2. Open the project in IntelliJ IDEA.
+3. Allow Maven to download and resolve dependencies.
+4. Configure Apache Tomcat 10.1.60.
+5. Add the `driveease:war exploded` deployment artifact.
+6. Set the application context to `/driveease`.
+7. Start the Tomcat server.
+
+Open the following URL in your browser:
+
+http://localhost:8080/driveease/dashboard
+
+**Note:** The application currently displays an initial dashboard preview. Vehicle management, booking management, and other planned features are under development.
+
+---
+
+## 🚀 Initial Deployment Verification
+
+The initial DriveEase web application has been successfully deployed and tested locally using Apache Tomcat.
+
+The following components were verified:
+
+- Maven project compilation.
+- Apache Tomcat server startup.
+- WAR exploded artifact deployment.
+- Dashboard Servlet request handling.
+- JSP page rendering in the browser.
+
+### Initial Dashboard Screenshot
+
+![DriveEase Initial Dashboard](docs/screenshots/dashboard-initial.png)
+
+*Figure 1: Initial DriveEase dashboard running on Apache Tomcat.*
 
 ---
 
@@ -339,12 +383,9 @@ The primary objective is to demonstrate practical knowledge of Java programming,
 
 ---
 
-<div align="center">
 
 ### 🚗 DriveEase
 
 **Your Journey, Our Wheels.**
 
 *SE1020 – Object Oriented Programming*
-
-</div>
