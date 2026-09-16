@@ -1,7 +1,12 @@
-# Compiled class file
+# ==========================================
+# DriveEase - Vehicle Rental Service Platform
+# SE1020 Object Oriented Programming
+# ==========================================
+
+# Compiled Java class files
 *.class
 
-# Log file
+# Log files
 *.log
 
 # BlueJ files
@@ -10,7 +15,7 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Java package files
 *.jar
 *.war
 *.nar
@@ -19,6 +24,38 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Java Virtual Machine crash logs
 hs_err_pid*
 replay_pid*
+
+# ==========================================
+# IntelliJ IDEA
+# ==========================================
+
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ==========================================
+# Maven Build Output
+# ==========================================
+
+target/
+
+# ==========================================
+# Operating System Files
+# ==========================================
+
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*.tmp
+*.temp
+*.bak
+*~
