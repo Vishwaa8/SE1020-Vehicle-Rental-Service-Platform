@@ -4,6 +4,7 @@ import com.driveease.model.Bike;
 import com.driveease.model.Car;
 import com.driveease.model.Van;
 import com.driveease.model.Vehicle;
+import com.driveease.service.BookingService;
 import com.driveease.service.VehicleService;
 
 import jakarta.servlet.ServletException;
@@ -19,6 +20,7 @@ import java.util.List;
 public class VehicleServlet extends HttpServlet {
 
     private final VehicleService vehicleService = new VehicleService();
+    private final BookingService bookingService = new BookingService();
 
     // Handle vehicle pages and search requests
     @Override
@@ -62,10 +64,12 @@ public class VehicleServlet extends HttpServlet {
                     "Error loading vehicle information.", e
             );
 
-            response.sendError(
-                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Unable to load vehicle information."
-            );
+            if (!response.isCommitted()) {
+                response.sendError(
+                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        "Unable to load vehicle information."
+                );
+            }
         }
     }
 
@@ -80,10 +84,12 @@ public class VehicleServlet extends HttpServlet {
         String action = request.getParameter("action");
 
         if (action == null) {
+
             response.sendError(
                     HttpServletResponse.SC_BAD_REQUEST,
                     "Vehicle action is required."
             );
+
             return;
         }
 
@@ -137,10 +143,12 @@ public class VehicleServlet extends HttpServlet {
                     "Error saving vehicle information.", e
             );
 
-            response.sendError(
-                    HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
-                    "Unable to save vehicle information."
-            );
+            if (!response.isCommitted()) {
+                response.sendError(
+                        HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
+                        "Unable to save vehicle information."
+                );
+            }
         }
     }
 
@@ -223,7 +231,7 @@ public class VehicleServlet extends HttpServlet {
     // Create a new vehicle
     private void createVehicle(HttpServletRequest request,
                                HttpServletResponse response)
-            throws IOException, ServletException {
+            throws IOException {
 
         Vehicle vehicle = buildVehicle(request);
 
@@ -235,7 +243,7 @@ public class VehicleServlet extends HttpServlet {
     // Update an existing vehicle
     private void updateVehicle(HttpServletRequest request,
                                HttpServletResponse response)
-            throws IOException, ServletException {
+            throws IOException {
 
         Vehicle vehicle = buildVehicle(request);
 
@@ -254,7 +262,7 @@ public class VehicleServlet extends HttpServlet {
         redirectToVehicles(request, response, "updated");
     }
 
-    // Delete a vehicle
+    // Delete a vehicle only if it has no existing bookings
     private void deleteVehicle(HttpServletRequest request,
                                HttpServletResponse response)
             throws IOException {
@@ -268,7 +276,27 @@ public class VehicleServlet extends HttpServlet {
             );
         }
 
-        boolean deleted = vehicleService.deleteVehicle(vehicleId);
+        String requestedId = vehicleId.trim();
+
+        boolean hasBookings = bookingService.getAllBookings()
+                .stream()
+                .anyMatch(booking ->
+                        booking.getVehicleId()
+                                .equalsIgnoreCase(requestedId)
+                );
+
+        if (hasBookings) {
+
+            response.sendError(
+                    HttpServletResponse.SC_CONFLICT,
+                    "This vehicle has existing bookings. " +
+                            "Delete its bookings before deleting the vehicle."
+            );
+
+            return;
+        }
+
+        boolean deleted = vehicleService.deleteVehicle(requestedId);
 
         if (!deleted) {
 
