@@ -24,7 +24,6 @@
     String contextPath = request.getContextPath();
 
     List<Vehicle> vehicles = new ArrayList<>();
-
     Object vehicleData = request.getAttribute("vehicles");
 
     if (vehicleData instanceof List<?>) {
@@ -67,8 +66,13 @@
 
     <title>Vehicle Management | DriveEase</title>
 
+    <script src="<%= escapeHtml(contextPath) %>/js/theme.js"></script>
+
     <link rel="stylesheet"
           href="<%= escapeHtml(contextPath) %>/css/vehicles.css">
+
+    <link rel="stylesheet"
+          href="<%= escapeHtml(contextPath) %>/css/theme.css">
 </head>
 
 <body>
@@ -79,17 +83,19 @@
     <aside class="sidebar">
 
         <div class="brand">
+
             <div class="brand-icon">🚗</div>
 
             <div>
                 <h2>DriveEase</h2>
                 <p>Vehicle Rental Platform</p>
             </div>
+
         </div>
 
         <div class="menu-label">MAIN MENU</div>
 
-        <nav class="navigation">
+        <nav class="navigation" aria-label="Main navigation">
 
             <a href="<%= escapeHtml(contextPath) %>/dashboard"
                class="nav-link">
@@ -104,11 +110,11 @@
                 Vehicles
             </a>
 
-            <span class="nav-link disabled">
+            <a href="<%= escapeHtml(contextPath) %>/bookings"
+               class="nav-link">
                 <span>▣</span>
                 Bookings
-                <small>Soon</small>
-            </span>
+            </a>
 
             <span class="nav-link disabled">
                 <span>♙</span>
@@ -119,7 +125,9 @@
         </nav>
 
         <div class="sidebar-bottom">
+
             <div class="sidebar-card">
+
                 <span>🚗</span>
 
                 <h3>Drive with ease.</h3>
@@ -128,11 +136,13 @@
                     Manage your rental fleet
                     in one place.
                 </p>
+
             </div>
 
             <p class="sidebar-footer">
                 DriveEase © 2026
             </p>
+
         </div>
 
     </aside>
@@ -144,6 +154,7 @@
         <header class="topbar">
 
             <div class="page-heading">
+
                 <p class="breadcrumb">
                     DriveEase / Management
                 </p>
@@ -153,6 +164,7 @@
                 <p class="page-subtitle">
                     Manage your fleet and vehicle availability.
                 </p>
+
             </div>
 
             <div class="admin-profile">
@@ -195,7 +207,7 @@
 
             </div>
 
-            <div class="hero-decoration">
+            <div class="hero-decoration" aria-hidden="true">
                 🚙
             </div>
 
@@ -208,9 +220,7 @@
 
                 <div class="stat-top">
 
-                    <span class="stat-icon blue">
-                        🚘
-                    </span>
+                    <span class="stat-icon blue">🚘</span>
 
                     <span class="stat-label">
                         Total Fleet
@@ -228,9 +238,7 @@
 
                 <div class="stat-top">
 
-                    <span class="stat-icon green">
-                        ✓
-                    </span>
+                    <span class="stat-icon green">✓</span>
 
                     <span class="stat-label">
                         Available Now
@@ -248,9 +256,7 @@
 
                 <div class="stat-top">
 
-                    <span class="stat-icon orange">
-                        ◷
-                    </span>
+                    <span class="stat-icon orange">◷</span>
 
                     <span class="stat-label">
                         Unavailable
@@ -272,19 +278,19 @@
             <div class="section-header">
 
                 <div>
+
                     <h2>All Vehicles</h2>
 
                     <p>
                         View, search and manage
                         your vehicle records.
                     </p>
+
                 </div>
 
                 <a href="<%= escapeHtml(contextPath) %>/vehicles?action=new"
                    class="primary-button">
-
                     + Add Vehicle
-
                 </a>
 
             </div>
@@ -317,7 +323,9 @@
 
                 <div class="search-input-wrapper">
 
-                    <span class="search-icon">⌕</span>
+                    <span class="search-icon" aria-hidden="true">
+                        ⌕
+                    </span>
 
                     <input type="search"
                            name="search"
@@ -386,9 +394,7 @@
 
                                     <a href="<%= escapeHtml(contextPath) %>/vehicles?action=new"
                                        class="primary-button">
-
                                         + Add First Vehicle
-
                                     </a>
 
                                 <% } %>
@@ -499,9 +505,7 @@
 
                                         <a href="<%= escapeHtml(contextPath) %>/vehicles?action=edit&amp;id=<%= escapeHtml(encodedId) %>"
                                            class="edit-button">
-
                                             Edit
-
                                         </a>
 
                                         <form action="<%= escapeHtml(contextPath) %>/vehicles"

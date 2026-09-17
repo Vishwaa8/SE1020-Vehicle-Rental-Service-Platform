@@ -1,0 +1,676 @@
+/* =========================================
+   DriveEase - Shared Dark / Light Theme
+   Dashboard, Vehicles and Bookings
+   ========================================= */
+
+/* Theme switch */
+
+.driveease-theme-toggle {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 132px;
+    min-height: 44px;
+    padding: 11px 16px;
+
+    border: 1px solid #d7e2f2;
+    border-radius: 999px;
+
+    background: #ffffff;
+    color: #183153;
+
+    box-shadow: 0 6px 22px rgba(15, 35, 65, 0.16);
+
+    font: 700 13px Arial, sans-serif;
+    cursor: pointer;
+
+    transition:
+            background 0.2s,
+            border-color 0.2s,
+            color 0.2s;
+}
+
+.driveease-theme-toggle:hover {
+    border-color: #2862e5;
+}
+
+.driveease-theme-toggle:focus-visible {
+    outline: 3px solid #7faaff;
+    outline-offset: 3px;
+}
+
+/* Shared dark theme */
+
+html[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] body {
+    background: #101827;
+    color: #e8eef9;
+}
+
+html[data-theme="dark"] .driveease-theme-toggle {
+    background: #263b58;
+    border-color: #496386;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .driveease-theme-toggle:hover {
+    background: #345174;
+    border-color: #77a5ff;
+}
+
+
+/* =========================================
+   Dashboard - Dark Mode
+   ========================================= */
+
+html[data-theme="dark"] .header {
+    background: #111e33;
+}
+
+html[data-theme="dark"] .welcome-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .quick-link {
+    background: #1b2a40;
+    border-color: #344762;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+}
+
+html[data-theme="dark"] .welcome-card h2,
+html[data-theme="dark"] .section-heading h2,
+html[data-theme="dark"] .stat-card strong,
+html[data-theme="dark"] .quick-link strong {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .welcome-card p,
+html[data-theme="dark"] .section-heading p,
+html[data-theme="dark"] .stat-card h3,
+html[data-theme="dark"] .stat-card p,
+html[data-theme="dark"] .quick-link p,
+html[data-theme="dark"] .dashboard-note,
+html[data-theme="dark"] .footer {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .quick-link:hover {
+    border-color: #77a5ff;
+}
+
+html[data-theme="dark"] .button-secondary {
+    background: #294a7b;
+    color: #e4efff;
+}
+
+html[data-theme="dark"] .button-secondary:hover {
+    background: #355b92;
+}
+
+html[data-theme="dark"] .status {
+    background: #164b39;
+    color: #b4f5d3;
+}
+
+/* Dashboard stat icons */
+
+html[data-theme="dark"] .stat-icon.green {
+    color: #166534;
+}
+
+html[data-theme="dark"] .stat-icon.orange {
+    color: #a16207;
+}
+
+
+/* =========================================
+   Booking Pages - Dark Mode
+   ========================================= */
+
+/* Main layout */
+
+html[data-theme="dark"] .be-main {
+    background: #101827;
+}
+
+html[data-theme="dark"] .be-sidebar {
+    background: linear-gradient(
+            180deg,
+            #111e33 0%,
+            #0b1526 100%
+    );
+}
+
+html[data-theme="dark"] .be-sidebar-note {
+    background: linear-gradient(
+            135deg,
+            #284976,
+            #172c4b
+    );
+}
+
+/* Headings and supporting text */
+
+html[data-theme="dark"] .be-topbar h1,
+html[data-theme="dark"] .be-panel-heading h2,
+html[data-theme="dark"] .be-form-heading h2,
+html[data-theme="dark"] .be-empty h3,
+html[data-theme="dark"] .be-form-field label {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .be-topbar p:last-child,
+html[data-theme="dark"] .be-panel-heading p,
+html[data-theme="dark"] .be-form-heading p,
+html[data-theme="dark"] .be-form-field small,
+html[data-theme="dark"] .be-table-footer,
+html[data-theme="dark"] .be-footer,
+html[data-theme="dark"] .be-empty p {
+    color: #b5c5df;
+}
+
+/* Booking statistics and panels */
+
+html[data-theme="dark"] .be-stat-card,
+html[data-theme="dark"] .be-panel,
+html[data-theme="dark"] .be-form-panel {
+    background: #1b2a40;
+    border-color: #344762;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+}
+
+html[data-theme="dark"] .be-stat-card p,
+html[data-theme="dark"] .be-stat-card small {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .be-stat-card strong {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .be-stat-icon.be-stat-blue {
+    background: #294a7b;
+}
+
+html[data-theme="dark"] .be-stat-icon.be-stat-green {
+    background: #164b39;
+}
+
+html[data-theme="dark"] .be-stat-icon.be-stat-orange {
+    background: #65401d;
+}
+
+/* Booking table */
+
+html[data-theme="dark"] .be-table thead {
+    background: #243650;
+}
+
+html[data-theme="dark"] .be-table th {
+    color: #c0cee3;
+}
+
+html[data-theme="dark"] .be-table td {
+    border-color: #344762;
+    color: #dce6f5;
+}
+
+html[data-theme="dark"] .be-table td strong,
+html[data-theme="dark"] .be-cost {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .be-table td small {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .be-table-footer {
+    border-color: #344762;
+}
+
+html[data-theme="dark"] .be-id {
+    color: #91b7ff !important;
+}
+
+html[data-theme="dark"] .be-vehicle-badge,
+html[data-theme="dark"] .be-button-edit {
+    background: #294a7b;
+    color: #dceaff;
+}
+
+/* Booking search */
+
+html[data-theme="dark"] .be-search input {
+    background: #142238;
+    border-color: #405570;
+    color: #f0f5ff;
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .be-search input::placeholder {
+    color: #a2b3cd;
+}
+
+html[data-theme="dark"] .be-search input:focus {
+    border-color: #77a5ff;
+    box-shadow: 0 0 0 3px rgba(119, 165, 255, 0.16);
+}
+
+/* Booking form */
+
+html[data-theme="dark"] .be-form-heading,
+html[data-theme="dark"] .be-form-actions {
+    border-color: #344762;
+}
+
+html[data-theme="dark"] .be-form-heading-icon {
+    background: #294a7b;
+}
+
+html[data-theme="dark"] .be-form-field input,
+html[data-theme="dark"] .be-form-field select {
+    background: #142238;
+    border-color: #405570;
+    color: #f0f5ff;
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .be-form-field input::placeholder {
+    color: #a2b3cd;
+}
+
+html[data-theme="dark"] .be-form-field input:focus,
+html[data-theme="dark"] .be-form-field select:focus {
+    border-color: #77a5ff;
+    box-shadow: 0 0 0 3px rgba(119, 165, 255, 0.16);
+}
+
+html[data-theme="dark"] .be-form-field input[readonly] {
+    background: #29384d;
+    color: #bac9de;
+}
+
+html[data-theme="dark"] .be-form-field select option {
+    background: #142238;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .be-form-field select option:disabled {
+    color: #9aacc7;
+}
+
+html[data-theme="dark"] .be-form-note {
+    background: #203858;
+    border-color: #3b5b87;
+}
+
+html[data-theme="dark"] .be-form-note strong {
+    color: #a9c8ff;
+}
+
+html[data-theme="dark"] .be-form-note p {
+    color: #c2d0e5;
+}
+
+/* Booking buttons */
+
+html[data-theme="dark"] .be-button-outline,
+html[data-theme="dark"] .be-button-light {
+    background: #2a405e;
+    border-color: #496386;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .be-button-outline:hover,
+html[data-theme="dark"] .be-button-light:hover {
+    background: #355274;
+}
+
+html[data-theme="dark"] .be-button-dark {
+    background: #34547e;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .be-button-dark:hover {
+    background: #406799;
+}
+
+html[data-theme="dark"] .be-button-delete {
+    background: #542c38;
+    color: #ffc5cd;
+}
+
+/* Booking success and error messages */
+
+html[data-theme="dark"] .be-alert-success {
+    background: #164b39;
+    color: #b4f5d3;
+}
+
+html[data-theme="dark"] .be-alert-error {
+    background: #562b36;
+    color: #ffccd3;
+}
+
+
+/* =========================================
+   Vehicle Pages - Dark Mode
+   ========================================= */
+
+/* Vehicle layout and sidebar */
+
+html[data-theme="dark"] .app-layout {
+    background: #101827;
+}
+
+html[data-theme="dark"] .app-layout .sidebar {
+    background: linear-gradient(
+            180deg,
+            #111e33,
+            #0b1526
+    );
+}
+
+html[data-theme="dark"] .app-layout .sidebar-card {
+    background: linear-gradient(
+            145deg,
+            #284976,
+            #172c4b
+    );
+}
+
+html[data-theme="dark"] .app-layout .main-content {
+    background: #101827;
+    color: #e8eef9;
+}
+
+/* Vehicle headings */
+
+html[data-theme="dark"] .app-layout .page-heading h1,
+html[data-theme="dark"] .app-layout .section-header h2,
+html[data-theme="dark"] .app-layout .form-header h2,
+html[data-theme="dark"] .app-layout .empty-state h3 {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .breadcrumb,
+html[data-theme="dark"] .app-layout .page-subtitle,
+html[data-theme="dark"] .app-layout .admin-details span,
+html[data-theme="dark"] .app-layout .section-header p,
+html[data-theme="dark"] .app-layout .form-header p,
+html[data-theme="dark"] .app-layout .main-footer {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .app-layout .admin-details strong {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .avatar {
+    background: #294a7b;
+    color: #e4efff;
+}
+
+/* Vehicle statistics and content cards */
+
+html[data-theme="dark"] .app-layout .stat-card,
+html[data-theme="dark"] .app-layout .content-card {
+    background: #1b2a40;
+    border-color: #344762;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+}
+
+html[data-theme="dark"] .app-layout .stat-card h3,
+html[data-theme="dark"] .app-layout .stat-card .stat-label {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .stat-card p {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .app-layout .stat-icon.blue {
+    background: #294a7b;
+    color: #c7dcff;
+}
+
+html[data-theme="dark"] .app-layout .stat-icon.green {
+    background: #164b39;
+    color: #b4f5d3;
+}
+
+html[data-theme="dark"] .app-layout .stat-icon.orange {
+    background: #65401d;
+    color: #ffe0ac;
+}
+
+/* Vehicle search */
+
+html[data-theme="dark"] .app-layout .search-input-wrapper {
+    background: #142238;
+    border-color: #405570;
+}
+
+html[data-theme="dark"] .app-layout .search-input-wrapper input {
+    color: #f0f5ff;
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .app-layout .search-input-wrapper input::placeholder {
+    color: #a2b3cd;
+}
+
+html[data-theme="dark"] .app-layout .search-icon {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .app-layout .search-input-wrapper:focus-within {
+    border-color: #77a5ff;
+    box-shadow: 0 0 0 3px rgba(119, 165, 255, 0.16);
+}
+
+html[data-theme="dark"] .app-layout .search-button {
+    background: #34547e;
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .app-layout .search-button:hover {
+    background: #406799;
+}
+
+html[data-theme="dark"] .app-layout .clear-button {
+    background: #2a405e;
+    border-color: #496386;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .clear-button:hover {
+    background: #355274;
+}
+
+/* Vehicle table */
+
+html[data-theme="dark"] .app-layout thead {
+    background: #243650;
+}
+
+html[data-theme="dark"] .app-layout th {
+    color: #c0cee3;
+}
+
+html[data-theme="dark"] .app-layout td {
+    color: #dce6f5;
+    border-color: #344762;
+}
+
+html[data-theme="dark"] .app-layout tbody tr:hover {
+    background: #253850;
+}
+
+html[data-theme="dark"] .app-layout .vehicle-id {
+    color: #91b7ff;
+}
+
+html[data-theme="dark"] .app-layout .vehicle-thumbnail,
+html[data-theme="dark"] .app-layout .type-badge,
+html[data-theme="dark"] .app-layout .edit-button {
+    background: #294a7b;
+    color: #dceaff;
+}
+
+html[data-theme="dark"] .app-layout .vehicle-details strong,
+html[data-theme="dark"] .app-layout .price {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .vehicle-details span,
+html[data-theme="dark"] .app-layout .price-period,
+html[data-theme="dark"] .app-layout .empty-state p,
+html[data-theme="dark"] .app-layout .table-footer {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .app-layout .table-footer {
+    border-color: #344762;
+}
+
+html[data-theme="dark"] .app-layout .status-badge.available {
+    background: #164b39;
+    color: #b4f5d3;
+}
+
+html[data-theme="dark"] .app-layout .status-badge.unavailable {
+    background: #562b36;
+    color: #ffccd3;
+}
+
+html[data-theme="dark"] .app-layout .delete-button {
+    background: #542c38;
+    color: #ffc5cd;
+}
+
+html[data-theme="dark"] .app-layout .delete-button:hover {
+    background: #693341;
+}
+
+/* Vehicle form */
+
+html[data-theme="dark"] .app-layout .back-link {
+    color: #a9c8ff;
+}
+
+html[data-theme="dark"] .app-layout .back-link:hover {
+    color: #c9dcff;
+}
+
+html[data-theme="dark"] .app-layout .form-header,
+html[data-theme="dark"] .app-layout .form-actions {
+    border-color: #344762;
+}
+
+html[data-theme="dark"] .app-layout .form-header-icon {
+    background: #294a7b;
+}
+
+html[data-theme="dark"] .app-layout .form-group label {
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .form-group small {
+    color: #b5c5df;
+}
+
+html[data-theme="dark"] .app-layout .form-group input,
+html[data-theme="dark"] .app-layout .form-group select {
+    background: #142238;
+    border-color: #405570;
+    color: #f0f5ff;
+    color-scheme: dark;
+}
+
+html[data-theme="dark"] .app-layout .form-group input::placeholder {
+    color: #a2b3cd;
+}
+
+html[data-theme="dark"] .app-layout .form-group input:focus,
+html[data-theme="dark"] .app-layout .form-group select:focus {
+    border-color: #77a5ff;
+    box-shadow: 0 0 0 3px rgba(119, 165, 255, 0.16);
+}
+
+html[data-theme="dark"] .app-layout .form-group input[readonly] {
+    background: #29384d;
+    color: #bac9de;
+}
+
+html[data-theme="dark"] .app-layout .form-group select option {
+    background: #142238;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .form-group select option:disabled {
+    color: #9aacc7;
+}
+
+html[data-theme="dark"] .app-layout .cancel-button {
+    background: #2a405e;
+    border-color: #496386;
+    color: #f0f5ff;
+}
+
+html[data-theme="dark"] .app-layout .cancel-button:hover {
+    background: #355274;
+}
+
+/* Vehicle success and error messages */
+
+html[data-theme="dark"] .app-layout .alert.success {
+    background: #164b39;
+    color: #b4f5d3;
+}
+
+html[data-theme="dark"] .app-layout .form-alert {
+    background: #562b36;
+    border-color: #844556;
+    color: #ffccd3;
+}
+
+/* Keep the vehicle hero banner readable */
+
+html[data-theme="dark"] .app-layout .hero-banner {
+    color: #ffffff;
+}
+
+html[data-theme="dark"] .app-layout .hero-button {
+    background: #eaf1ff;
+    color: #194dcc;
+}
+
+html[data-theme="dark"] .app-layout .hero-button:hover {
+    background: #ffffff;
+}
+
+
+/* =========================================
+   Responsive Theme Switch
+   ========================================= */
+
+@media (max-width: 600px) {
+    .driveease-theme-toggle {
+        right: 12px;
+        bottom: 12px;
+
+        min-width: 118px;
+        min-height: 40px;
+        padding: 9px 12px;
+
+        font-size: 12px;
+    }
+}

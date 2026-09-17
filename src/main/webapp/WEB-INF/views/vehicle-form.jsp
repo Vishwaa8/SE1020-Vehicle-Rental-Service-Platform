@@ -21,7 +21,6 @@
     Vehicle vehicle = (Vehicle) request.getAttribute("vehicle");
 
     String formAction = (String) request.getAttribute("formAction");
-
     boolean isEdit = "update".equals(formAction);
 
     String error = (String) request.getAttribute("error");
@@ -75,9 +74,13 @@
         <%= isEdit ? "Edit Vehicle" : "Add Vehicle" %> | DriveEase
     </title>
 
+    <script src="<%= escapeHtml(contextPath) %>/js/theme.js"></script>
+
     <link rel="stylesheet"
           href="<%= escapeHtml(contextPath) %>/css/vehicles.css">
 
+    <link rel="stylesheet"
+          href="<%= escapeHtml(contextPath) %>/css/theme.css">
 </head>
 
 <body>
@@ -100,7 +103,7 @@
 
         <div class="menu-label">MAIN MENU</div>
 
-        <nav class="navigation">
+        <nav class="navigation" aria-label="Main navigation">
 
             <a href="<%= escapeHtml(contextPath) %>/dashboard"
                class="nav-link">
@@ -109,16 +112,17 @@
             </a>
 
             <a href="<%= escapeHtml(contextPath) %>/vehicles"
-               class="nav-link active">
+               class="nav-link active"
+               aria-current="page">
                 <span>🚘</span>
                 Vehicles
             </a>
 
-            <span class="nav-link disabled">
+            <a href="<%= escapeHtml(contextPath) %>/bookings"
+               class="nav-link">
                 <span>▣</span>
                 Bookings
-                <small>Soon</small>
-            </span>
+            </a>
 
             <span class="nav-link disabled">
                 <span>♙</span>
@@ -151,7 +155,7 @@
 
     </aside>
 
-    <!-- Main Content -->
+    <!-- Main content -->
     <main class="main-content">
 
         <header class="topbar">
@@ -168,11 +172,9 @@
                 </h1>
 
                 <p class="page-subtitle">
-
                     <%= isEdit
                             ? "Update your vehicle information."
                             : "Add a new vehicle to your rental fleet." %>
-
                 </p>
 
             </div>
@@ -190,15 +192,13 @@
 
         </header>
 
-        <!-- Back Link -->
+        <!-- Back link -->
         <a href="<%= escapeHtml(contextPath) %>/vehicles"
            class="back-link">
-
             ← Back to Vehicles
-
         </a>
 
-        <!-- Vehicle Form Card -->
+        <!-- Vehicle form card -->
         <section class="content-card vehicle-form-card">
 
             <div class="form-header">
@@ -264,7 +264,7 @@
 
                 </div>
 
-                <!-- Brand and Model -->
+                <!-- Brand and model -->
                 <div class="form-row">
 
                     <div class="form-group">
@@ -303,7 +303,7 @@
 
                 </div>
 
-                <!-- Vehicle Type -->
+                <!-- Vehicle type and daily rate -->
                 <div class="form-row">
 
                     <div class="form-group">
@@ -342,7 +342,6 @@
 
                     </div>
 
-                    <!-- Daily Rental Rate -->
                     <div class="form-group">
 
                         <label for="dailyRate">
@@ -399,23 +398,19 @@
 
                 </div>
 
-                <!-- Form Actions -->
+                <!-- Form actions -->
                 <div class="form-actions">
 
                     <a href="<%= escapeHtml(contextPath) %>/vehicles"
                        class="cancel-button">
-
                         Cancel
-
                     </a>
 
                     <button type="submit"
                             class="save-button">
-
                         <%= isEdit
                                 ? "Save Changes"
                                 : "Add Vehicle" %>
-
                     </button>
 
                 </div>

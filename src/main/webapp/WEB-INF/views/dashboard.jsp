@@ -32,6 +32,8 @@
 
     <title>DriveEase | Dashboard</title>
 
+    <script src="<%= contextPath %>/js/theme.js"></script>
+
     <style>
         * {
             margin: 0;
@@ -344,6 +346,10 @@
             }
         }
     </style>
+
+    <link rel="stylesheet"
+          href="<%= contextPath %>/css/theme.css">
+
 </head>
 
 <body>
