@@ -3,10 +3,12 @@ package com.driveease.service;
 import com.driveease.model.Car;
 import com.driveease.model.Van;
 import com.driveease.model.Vehicle;
+import com.driveease.util.BookingFileHandler;
 import com.driveease.util.VehicleFileHandler;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class VehicleServiceTest {
 
@@ -14,12 +16,20 @@ public class VehicleServiceTest {
 
         Path testDirectory = Files.createTempDirectory("driveease-crud-");
         Path testFile = testDirectory.resolve("vehicles.txt");
+        Path testBookingFile = testDirectory.resolve("bookings.txt");
 
         try {
+            // Use temporary files instead of actual application data.
             VehicleFileHandler fileHandler =
                     new VehicleFileHandler(testFile);
 
-            VehicleService service = new VehicleService(fileHandler);
+            BookingFileHandler bookingFileHandler =
+                    new BookingFileHandler(testBookingFile);
+
+            bookingFileHandler.saveBookings(List.of());
+
+            VehicleService service =
+                    new VehicleService(fileHandler, bookingFileHandler);
 
             // Test 1: Add vehicles
             Vehicle car = new Car(
@@ -97,7 +107,7 @@ public class VehicleServiceTest {
 
             System.out.println("PASS: Search vehicles.");
 
-            // Test 7: Delete vehicle
+            // Test 7: Delete an unbooked vehicle
             boolean deleted = service.deleteVehicle("V001");
 
             check(deleted, "DELETE operation failed.");
@@ -113,7 +123,8 @@ public class VehicleServiceTest {
             // Test 8: Confirm data persistence
             VehicleService reloadedService =
                     new VehicleService(
-                            new VehicleFileHandler(testFile)
+                            new VehicleFileHandler(testFile),
+                            new BookingFileHandler(testBookingFile)
                     );
 
             check(reloadedService.getAllVehicles().size() == 1,
@@ -128,6 +139,8 @@ public class VehicleServiceTest {
             System.out.println("ALL VEHICLE CRUD TESTS PASSED");
 
         } finally {
+            // Clean up only the temporary test files.
+            Files.deleteIfExists(testBookingFile);
             Files.deleteIfExists(testFile);
             Files.deleteIfExists(testDirectory);
         }

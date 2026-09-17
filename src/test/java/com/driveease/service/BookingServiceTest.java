@@ -38,8 +38,12 @@ public class BookingServiceTest {
                     new Bike("BK001", "Honda", "Dio", 2500.00, false)
             ));
 
+            // Both services use temporary vehicle and booking files.
             VehicleService vehicleService =
-                    new VehicleService(vehicleFileHandler);
+                    new VehicleService(
+                            vehicleFileHandler,
+                            bookingFileHandler
+                    );
 
             BookingService bookingService =
                     new BookingService(
@@ -52,6 +56,7 @@ public class BookingServiceTest {
                     bookingService.getAllBookings().isEmpty(),
                     "Booking list should initially be empty."
             );
+
             System.out.println("PASS 1 - Empty booking list");
 
             // Test 2: Create a booking.
@@ -184,12 +189,10 @@ public class BookingServiceTest {
             check(updatedBooking != null,
                     "Updated booking was not found.");
 
-            check(updatedBooking.getCustomerName()
-                            .equals("Kamal Updated"),
+            check(updatedBooking.getCustomerName().equals("Kamal Updated"),
                     "Customer name was not updated.");
 
-            check(updatedBooking.getStartDate()
-                            .equals(date(2026, 9, 25)),
+            check(updatedBooking.getStartDate().equals(date(2026, 9, 25)),
                     "Start date was not updated.");
 
             check(updatedBooking.getDailyRate() == 8500.00,
@@ -224,7 +227,8 @@ public class BookingServiceTest {
             BookingService reloadedService = new BookingService(
                     new BookingFileHandler(bookingFile),
                     new VehicleService(
-                            new VehicleFileHandler(vehicleFile)
+                            new VehicleFileHandler(vehicleFile),
+                            new BookingFileHandler(bookingFile)
                     )
             );
 
@@ -237,29 +241,21 @@ public class BookingServiceTest {
             System.out.println("PASS 13 - Booking persistence");
 
             System.out.println();
-            System.out.println(
-                    "ALL 13 BOOKING SERVICE TESTS PASSED!"
-            );
+            System.out.println("ALL 13 BOOKING SERVICE TESTS PASSED!");
 
         } finally {
+            // Delete only the temporary test files.
             Files.deleteIfExists(bookingFile);
             Files.deleteIfExists(vehicleFile);
             Files.deleteIfExists(testDirectory);
         }
     }
 
-    private static LocalDate date(
-            int year,
-            int month,
-            int day
-    ) {
+    private static LocalDate date(int year, int month, int day) {
         return LocalDate.of(year, month, day);
     }
 
-    private static void check(
-            boolean condition,
-            String message
-    ) {
+    private static void check(boolean condition, String message) {
         if (!condition) {
             throw new AssertionError(message);
         }
